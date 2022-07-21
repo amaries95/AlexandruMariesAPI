@@ -1,0 +1,8 @@
+.vs/
+
+# build
+bin/
+obj/
+Debug/
+Release/
+.idea/
