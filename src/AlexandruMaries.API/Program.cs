@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
 	options.AddPolicy(policyName,
 		builder =>
 		{
-			builder.WithOrigins("http://localhost:3000", "https://happy-sand-0fffc8d03.2.azurestaticapps.net")
+			builder.WithOrigins("http://localhost:3000", "https://happy-sand-0fffc8d03.2.azurestaticapps.net", "https://alexandrumaries.com")
 				.WithMethods("GET", "POST", "DELETE", "PATCH", "PUT")
 				.AllowAnyHeader();
 		});
