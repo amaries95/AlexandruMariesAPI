@@ -27,7 +27,7 @@ public class ReferenceRepositoryBenchmark : BaseRepositoryBenchmark
     [Benchmark]
     public async Task GetAllReferences()
     {
-        await _referenceRepository.GetAllReferences(false);
+        await _referenceRepository.GetAllReferences();
     }
 
     [Benchmark]
