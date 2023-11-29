@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlexandruMaries.Data", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlexandruMaries.Model", "src\AlexandruMaries.Model\AlexandruMaries.Model.csproj", "{3538262C-1D3A-479F-9158-D1DCB4F8657B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".benchmarks", ".benchmarks", "{734CC3DC-9B0C-486F-96CE-716A05BC7B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Benchmarks", "Data.Benchmarks\Data.Benchmarks.csproj", "{707EFC4E-E943-4E45-B107-56762DD6152B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{3538262C-1D3A-479F-9158-D1DCB4F8657B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3538262C-1D3A-479F-9158-D1DCB4F8657B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3538262C-1D3A-479F-9158-D1DCB4F8657B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{707EFC4E-E943-4E45-B107-56762DD6152B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707EFC4E-E943-4E45-B107-56762DD6152B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707EFC4E-E943-4E45-B107-56762DD6152B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707EFC4E-E943-4E45-B107-56762DD6152B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{F26A44D6-732B-48BF-8E34-0096CC74089D} = {F2BC61D8-452E-4B13-AFD0-5DBF157A661A}
 		{A5A70FDC-A087-4F5E-9847-BD96E7F0780C} = {F2BC61D8-452E-4B13-AFD0-5DBF157A661A}
 		{3538262C-1D3A-479F-9158-D1DCB4F8657B} = {F2BC61D8-452E-4B13-AFD0-5DBF157A661A}
+		{707EFC4E-E943-4E45-B107-56762DD6152B} = {734CC3DC-9B0C-486F-96CE-716A05BC7B8B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E746F973-A157-4F5C-A8F1-6F705A88FD6C}

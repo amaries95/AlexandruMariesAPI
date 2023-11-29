@@ -6,3 +6,4 @@ obj/
 Debug/
 Release/
 .idea/
+/Data.Benchmarks/BenchmarkDotNet.Artifacts

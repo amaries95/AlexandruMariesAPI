@@ -1,8 +1,6 @@
-﻿using AlexandruMaries.Data.RepoModels;
-using AlexandruMaries.Infrastructure.Interfaces;
-using AlexandruMaries.Infrastructure.Repositories;
+﻿using AlexandruMaries.Data.Interfaces;
+using AlexandruMaries.Data.RepoModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlexandruMaries.API.Controllers
@@ -21,7 +19,7 @@ namespace AlexandruMaries.API.Controllers
 		[HttpGet("/[controller]/visible")]
 		public async Task<IActionResult> GetVisibleReferences()
 		{
-			var response = _referenceRepository.GetAllReferences(true);
+			var response = await _referenceRepository.GetAllVisibleReferences();
 
 			return Ok(response);
 		}
@@ -38,7 +36,7 @@ namespace AlexandruMaries.API.Controllers
 		[HttpGet("/[controller]/all")]
 		public async Task<IActionResult> GetAllReferences()
 		{
-			var response = _referenceRepository.GetAllReferences(false);
+			var response = await _referenceRepository.GetAllVisibleReferences();
 
 			return Ok(response);
 		}

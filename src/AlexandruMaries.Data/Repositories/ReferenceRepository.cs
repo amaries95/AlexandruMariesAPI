@@ -1,21 +1,25 @@
-﻿using AlexandruMaries.Data;
+﻿using System.Data;
+using AlexandruMaries.Data.Constants;
+using AlexandruMaries.Data.Interfaces;
 using AlexandruMaries.Data.RepoModels;
-using AlexandruMaries.Infrastructure.Interfaces;
 using AlexandruMaries.Model;
+using Dapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace AlexandruMaries.Infrastructure.Repositories
+namespace AlexandruMaries.Data.Repositories
 {
 	public class ReferenceRepository : IReferenceRepository
 	{
 		private readonly AlexandruMariesDbContext _alexandruMariesDbContext;
+		private readonly IDapperContext _dapperContext;
 
-		public ReferenceRepository(AlexandruMariesDbContext alexandruMariesDbContext)
-		{
-			_alexandruMariesDbContext = alexandruMariesDbContext;
-		}
+        public ReferenceRepository(AlexandruMariesDbContext alexandruMariesDbContext, IDapperContext dapperContext)
+        {
+            _alexandruMariesDbContext = alexandruMariesDbContext;
+            _dapperContext = dapperContext;
+        }
 
-		public async Task<ReferenceResponse> AddNewReference(ReferenceRequest referenceRequest)
+        public async Task<ReferenceResponse> AddNewReference(ReferenceRequest referenceRequest)
 		{
 			var reference = new Reference
 			{
@@ -48,18 +52,24 @@ namespace AlexandruMaries.Infrastructure.Repositories
 			return null;
 		}
 
-		public IQueryable<Reference> GetAllReferences(bool returnVisibleReferencesOnly)
+		public async Task<IEnumerable<Reference>> GetAllReferences()
 		{
-			if(returnVisibleReferencesOnly)
-			{
-				return _alexandruMariesDbContext.References.Where(reference => reference.IsVisible == true);
+			return await _alexandruMariesDbContext.References
+                .AsNoTracking()
+                .ToListAsync();
+        }
 
-			}
+        public async Task<IEnumerable<Reference>> GetAllVisibleReferences()
+        {
+            IEnumerable<Reference> response;
 
-			return _alexandruMariesDbContext.References;
+            using (IDbConnection dbConnection = _dapperContext.GetConnection())
+            {
+                response = await dbConnection.QueryAsync<Reference>(QueryConstants.GetAllVisibleReferences);
+            }
 
-
-		}
+			return response.ToList();
+        }
 
 		public async Task UpdateVisibilityOnReferences(ReferenceRequest referenceRequest)
 		{
